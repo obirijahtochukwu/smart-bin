@@ -1,0 +1,38 @@
+@import "../../../../../styles/theme.scss";
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: #{lg(632)};
+  height: #{lg(279)};
+  border: #{lg(1)} dashed $green;
+  border-radius: #{lg(6)};
+  background: rgba(102, 165, 126, 0.06);
+}
+
+.title {
+  color: $black;
+  font-size: #{lg(20)};
+  font-weight: 500;
+  margin: #{lg(24)} 0 #{lg(13)} 0;
+}
+
+.icon {
+  gap: #{lg(62)};
+  gap: #{lg(62)};
+}
+
+.btns {
+  display: flex;
+  gap: #{lg(20)};
+  margin-top: #{lg(24)};
+}
+
+.text {
+  color: $black;
+  opacity: 0.5;
+  font-size: #{lg(16)};
+  font-weight: 400;
+}

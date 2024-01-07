@@ -1,0 +1,74 @@
+@import "../../../styles/theme.scss";
+
+.container {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - #{lg(48)});
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: #{lg(34)};
+  background: $green;
+  border-radius: #{lg(12)};
+  padding: #{lg(42)} #{lg(30)} #{lg(20)};
+  transition: all 0.3s ease-in;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sticky {
+    position: sticky;
+    content: "";
+    bottom: 1px;
+    left: 0;
+    width: 100%;
+    height: -2px;
+    background: linear-gradient(0deg, rgb(0, 0, 0, 0.04), rgb(0, 0, 0, 0.01));
+    box-shadow: 0 10px 60px 30px rgb(0, 0, 0, 0.7);
+    transition: 0.2s;
+  }
+}
+.container.hide {
+  width: #{lg(120)};
+  gap: #{lg(30)};
+  padding: #{lg(24)} #{lg(14)};
+}
+
+.logo {
+  height: #{lg(86)};
+  width: #{lg(277)};
+}
+.logo.hide {
+  height: #{lg(30)} !important;
+  width: #{lg(92)} !important;
+}
+
+.text {
+  color: $white;
+  font-size: #{lg(20)};
+  font-weight: 500;
+}
+
+.zones {
+  display: flex;
+  flex-direction: column;
+  gap: #{lg(16)};
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: #{lg(12)};
+  height: #{lg(41)};
+  width: 100%;
+  background: rgb(255, 255, 255, 0.12);
+  color: $white;
+  font-size: #{lg(16)};
+  font-weight: 500;
+  border-radius: #{lg(6)};
+  outline: none;
+  border: none;
+  margin-top: #{lg(20)};
+}

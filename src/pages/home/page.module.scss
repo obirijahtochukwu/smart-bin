@@ -1,0 +1,35 @@
+@import "../../styles/theme.scss";
+
+.container {
+  display: grid;
+  grid-template-columns: #{lg(342)} auto;
+  background: $white;
+  gap: #{lg(24)};
+  padding: #{lg(24)};
+}
+
+.container.hide {
+  grid-template-columns: #{lg(120)} auto !important;
+  // display:none !important;
+}
+
+.image {
+  // display:none;
+  width: 100%;
+  height: calc(100vh - #{lg(48)});
+  object-fit: cover;
+  border-radius: #{lg(12)};
+  overflow: hidden;
+}
+
+.fill_level {
+  position: absolute;
+  top: calc((100% - 20px) / 2);
+  left: 10px;
+  color: $white;
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+}

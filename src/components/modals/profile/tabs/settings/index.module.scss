@@ -1,0 +1,29 @@
+@import "../../../../../styles/theme.scss";
+
+.logo {
+  width: #{lg(125)};
+  height: #{lg(137)};
+  margin-top: #{lg(12)};
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: #{lg(15)};
+  margin-top: #{lg(10)};
+}
+
+.title {
+  color: $black;
+  font-size: #{lg(13)};
+  font-weight: 400;
+  text-transform: capitalize;
+  position: relative;
+  bottom: #{lg(-13)};
+}
+
+.btns {
+  display: flex;
+  gap: #{lg(20)};
+  margin-top: #{lg(24)};
+}

@@ -1,0 +1,51 @@
+@import "../../../styles/theme.scss";
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: #{lg(10)};
+  color: $black;
+  font-size: #{lg(16)};
+  font-weight: 400;
+  margin-top: #{lg(62)};
+}
+
+.input[type="checkbox"] {
+  position: relative;
+  border: 2px solid $muted;
+  border-radius: 2px;
+  background: $white;
+  cursor: pointer;
+  line-height: 0;
+  outline: 0;
+  padding: 0 !important;
+  vertical-align: text-top;
+  height: #{lg(32)};
+  width: #{lg(32)};
+  -webkit-appearance: none;
+  transition: all 0.2s ease-in-out;
+  // opacity: 0.5;
+}
+
+.input[type="checkbox"]:hover {
+  opacity: 1;
+}
+
+.input[type="checkbox"]:checked {
+  background-color: $green;
+  opacity: 1;
+}
+
+.input[type="checkbox"]:before {
+  content: "";
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  width: #{lg(8)};
+  height: #{lg(15)};
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  margin: #{lg(-2)} #{lg(-2)} 0 #{lg(-2)};
+  transform: rotate(45deg) translate(-50%, -50%);
+  z-index: 2;
+}

@@ -1,0 +1,103 @@
+$white: white;
+$muted: #e7e7e7;
+$halfwhite: rgba(255, 255, 255, 0.5);
+$black: #1d1d1d;
+$green: #66a57e;
+$red: #f00;
+$grey: rgba(255, 255, 255, 0.9);
+$transparent: #f3f3f3;
+
+$inter: "Inter";
+.pagination .page-link {
+  color: #66a57e !important;
+  // background: $green !important;
+}
+@function scaleX($value) {
+  @return calc(#{$value}px * (var(--b) / 390));
+}
+
+@function lg(
+  $value,
+  $idealWidth: 1440,
+  $currentWidth: 100vw,
+  $maxWidth: 1920px,
+  $minWidth: 950px
+) {
+  @return calc(
+    #{$value} * (clamp(#{$minWidth}, #{$currentWidth}, #{$maxWidth}) / #{$idealWidth})
+  );
+}
+
+@mixin flexCenterAround() {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@mixin flexCenterBetween() {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flexCenterEnd() {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+@mixin flexCenter() {
+  display: flex;
+  align-items: center;
+}
+
+@mixin BgImgContain() {
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@mixin BgImgCover() {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@mixin spacingCenter() {
+  letter-spacing: #{scaleX(0.2)};
+  text-align: center;
+}
+
+@mixin text300() {
+  font-family: $inter;
+  font-weight: 300;
+}
+
+@mixin text400() {
+  font-family: $inter;
+  font-weight: 400;
+}
+
+@mixin text500() {
+  font-family: $inter;
+  font-weight: 500;
+}
+
+@mixin text600() {
+  font-family: $inter;
+  font-weight: 600;
+}
+
+@mixin text700() {
+  font-family: $inter;
+  font-weight: 700;
+}
+
+@mixin text900() {
+  font-family: $inter;
+  font-weight: 900;
+}
+
+@mixin easeInOut() {
+  transition: all 0.2s ease-in-out;
+}

@@ -1,0 +1,17 @@
+@import "../../../styles/theme.scss";
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: #{lg(12)};
+  height: #{lg(54)};
+  width: 100%;
+  background: $white;
+  color: $green;
+  font-size: #{lg(16)};
+  font-weight: 500;
+  border-radius: #{lg(6)};
+  outline: none;
+  border: #{lg(1)} solid $white;
+}

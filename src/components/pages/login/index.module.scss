@@ -1,0 +1,83 @@
+@import "../../../styles/theme.scss";
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  @include BgImgCover();
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: #{lg(80)};
+  overflow: hidden;
+}
+
+.truck {
+  position: absolute;
+  z-index: -1;
+  top: calc((100% - #{lg(180)}) / 2);
+  left: #{lg(-482)};
+  height: #{lg(380)};
+  width: #{lg(619)};
+}
+
+.earth {
+  position: absolute;
+  z-index: -1;
+  top: #{lg(-56)};
+  right: #{lg(-455)};
+  height: #{lg(876)};
+  width: #{lg(483)};
+}
+
+.zigzag {
+  position: absolute;
+  z-index: -1;
+  bottom: #{lg(38)};
+  left: #{lg(-226)};
+  height: #{lg(232)};
+  width: #{lg(1005)};
+}
+
+.main {
+  padding: #{lg(42)};
+  padding-top: #{lg(65)};
+  width: fit-content;
+  background: $grey;
+  border-radius: #{lg(16)};
+  backdrop-filter: blur(#{lg(12)});
+}
+
+.logo {
+  height: #{lg(123)};
+  object-fit: cover;
+  width: #{lg(374)};
+  margin: 0 auto;
+}
+
+.title {
+  color: $black;
+  font-size: #{lg(32)};
+  font-weight: 700;
+}
+
+.desc {
+  color: $black;
+  font-size: #{lg(20)};
+  font-weight: 400;
+  opacity: 0.75;
+  margin: #{lg(16)} 0 #{lg(32)} 0;
+}
+
+.text {
+  color: $red;
+  font-size: #{lg(16)};
+  font-weight: 400;
+  float: right;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: #{lg(16)};
+  margin-bottom: #{lg(24)};
+}

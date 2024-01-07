@@ -1,0 +1,95 @@
+@import "../../../styles/theme.scss";
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(#{lg(3.5)});
+  transition: all 0.1s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  z-index: -1;
+}
+.container.show {
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 1 !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+.main {
+  display: flex;
+  background: $white;
+  overflow: hidden;
+  border-radius: #{lg(16)};
+  box-shadow: 0px #{lg(10)} #{lg(50)} 0px rgba(0, 0, 0, 0.16);
+  transform: translateY(10%);
+  transition: all 0.3s ease-in-out;
+}
+.main.show {
+  transform: translateY(0%) !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+.aside {
+  background: #f5f6fa;
+  padding: #{lg(32)} 0 #{lg(32)} #{lg(24)};
+  width: #{lg(224)};
+}
+
+.title {
+  color: $black;
+  font-size: #{lg(20)};
+  font-weight: 500;
+  margin-bottom: #{lg(24)};
+}
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: #{lg(12)};
+}
+
+.tab {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: #{lg(6)};
+  width: 100%;
+  color: $black;
+  font-size: #{lg(16)};
+  font-weight: 400;
+  padding: #{lg(12)} #{lg(18)};
+  border: #{lg(1)} solid transparent;
+  border-right: none;
+  border-left-width: #{lg(2)};
+  transition: all 0.2s ease-in;
+}
+
+.tabContainer {
+  min-height: #{lg(502)};
+  height: 100%;
+  width: #{lg(348)};
+  padding: #{lg(24)} #{lg(24)} #{lg(42)} #{lg(24)};
+  background: white;
+  transition: all 0.2s ease-in-out;
+}
+
+.tabTitle {
+  color: $black;
+  font-size: #{lg(20)};
+  font-weight: 500;
+  margin: #{lg(42)} 0 #{lg(20)} 0;
+}
+
+.tabIcon {
+  cursor: pointer;
+  height: #{lg(28)};
+  width: #{lg(28)};
+}

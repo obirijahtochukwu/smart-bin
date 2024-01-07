@@ -1,0 +1,39 @@
+@import "../../../styles/theme.scss";
+
+.button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: #{lg(12)};
+  padding: #{lg(12)};
+  width: 100%;
+  border-radius: #{lg(6)};
+  border: #{lg(1)} solid $halfwhite;
+  margin-top: auto;
+}
+
+.user {
+  height: #{lg(48)};
+  width: #{lg(48)};
+  border-radius: 100%;
+}
+
+.title {
+  color: $white;
+  font-size: #{lg(14)};
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.text {
+  color: $white;
+  font-size: #{lg(12)};
+  font-weight: 300;
+  opacity: 0.75;
+}
+
+.hide {
+  width: #{lg(62)};
+  height: #{lg(62)};
+  margin: 0 auto;
+}

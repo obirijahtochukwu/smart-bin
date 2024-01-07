@@ -1,0 +1,66 @@
+@import "../../../../../styles/theme.scss";
+
+.tableTitle {
+  display: grid;
+  width: 100%;
+  // gap: 70px;
+  justify-content: space-between;
+  grid-template-columns: #{lg(300)} #{lg(150)} #{lg(60)};
+  padding: #{lg(14)};
+  color: $green;
+  font-size: #{lg(12)};
+  font-weight: 400;
+  text-transform: capitalize;
+  border-top: #{lg(1)} solid $green;
+  border-bottom: #{lg(1)} solid $green;
+  background: rgba(102, 165, 126, 0.04);
+}
+
+.tabTitle {
+  color: $black;
+  font-size: #{lg(20)};
+  font-weight: 500;
+  margin: #{lg(42)} 0 #{lg(20)} 0;
+}
+
+.table {
+  display: grid;
+  width: 100%;
+  cursor: default;
+  // gap: 70px;
+  justify-content: space-between;
+  grid-template-columns: #{lg(300)} #{lg(150)} #{lg(60)};
+  padding: #{lg(14)};
+  color: $black;
+  font-size: #{lg(12)};
+  font-weight: 400;
+  border-bottom: #{lg(1)} solid rgba(0, 0, 0, 0.1);
+  transition: 0.2s linear;
+
+  &:hover {
+    background: rgba(102, 165, 126, 0.01);
+  }
+}
+
+.tableIcons {
+  display: flex;
+  gap: #{lg(16)};
+}
+
+.tableIcon {
+  cursor: pointer;
+  width: #{lg(20)};
+  height: #{lg(20)};
+}
+
+.form {
+  display: grid;
+  grid-template-columns: #{lg(125)} #{lg(258)} #{lg(73)} auto;
+  gap: #{lg(10)};
+}
+
+.btns {
+  display: flex;
+  gap: #{lg(20)};
+  margin-top: #{lg(24)};
+}

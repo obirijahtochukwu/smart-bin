@@ -1,0 +1,8 @@
+@import "../../../../../styles/theme.scss";
+
+
+.btns {
+  display: flex;
+  gap: #{lg(20)};
+  margin-top: #{lg(24)};
+}

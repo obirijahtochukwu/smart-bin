@@ -1,0 +1,60 @@
+@import "../../../styles/theme.scss";
+
+.container {
+  position: relative;
+  width: 100%;
+  background-color: #ffffff;
+  border: #{lg(1)} solid;
+  border-color: #e6e6e6;
+  border-radius: #{lg(6)};
+  display: flex;
+  align-items: center;
+  gap: #{lg(12)};
+  // padding: 0 #{lg(20)};
+
+  input {
+    width: 100%;
+    height: #{lg(48)};
+    border: none;
+    color: $black;
+    font-size: #{lg(16)};
+    font-weight: 400;
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + #{lg(10)});
+  left: 0;
+  width: 100%;
+  background: $white;
+  padding: #{lg(10)};
+  display: flex;
+  flex-direction: column;
+  gap: #{lg(10)};
+  border-radius: #{lg(10)};
+  z-index: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.2s;
+}
+.dropdown.show {
+  z-index: 1 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.dropdownItem {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: #{lg(10)};
+  padding: #{lg(10)} #{lg(15)};
+  border-radius: #{lg(10)};
+  font-size: #{lg(18)};
+  transition: all 0.2s ease-in-out;
+}
+
+.dropdownItem:hover {
+  background: rgb(102, 165, 126, 0.1);
+}
