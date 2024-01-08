@@ -90,6 +90,7 @@ const App = ({ markers }: { markers: marker[] | any }) => {
   const { isLoaded } = useLoadScript({
     id: "google-map-script",
     googleMapsApiKey: `AIzaSyA5xY7XPkq8Huj9k4zM9EVrMGNyBJlE50I`,
+    // @ts-ignore
     libraries: libraries,
   });
 

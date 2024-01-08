@@ -69,7 +69,7 @@ export default function Address({
   return (
     <LoadScriptNext
       libraries={libraries}
-      googleMapsApiKey={process.env.REACT_APP_MAP_KEY || ""}
+      googleMapsApiKey={"AIzaSyA5xY7XPkq8Huj9k4zM9EVrMGNyBJlE50I" || ""}
     >
       <Autocomplete onPlaceChanged={onPlaceChanged} onLoad={onLoad}>
         <div className={styles.container}>
