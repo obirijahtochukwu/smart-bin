@@ -17,17 +17,17 @@ export const ArrowleftIcon = ({ ...props }: any) => {
           d="M7.97508 4.94165L2.91675 9.99998L7.97508 15.0583"
           stroke="white"
           strokeWidth="1.5"
-          stroke-miterlimit="10"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeMiterlimit="10"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M17.0833 10H3.05835"
           stroke="white"
           strokeWidth="1.5"
-          stroke-miterlimit="10"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeMiterlimit="10"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
     </svg>

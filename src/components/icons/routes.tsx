@@ -25,22 +25,22 @@ export const RoutesIcon: React.FC<className> = ({ className }) => {
         d="M11.9999 5H14.6799C16.5299 5 17.3899 7.29 15.9999 8.51L8.00995 15.5C6.61995 16.71 7.47994 19 9.31994 19H11.9999"
         stroke="#66A57E"
         strokeWidth="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M5.48622 5.5H5.49777"
         stroke="#66A57E"
         strokeWidth="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
       <path
         d="M18.4862 17.5H18.4978"
         stroke="#66A57E"
         strokeWidth="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

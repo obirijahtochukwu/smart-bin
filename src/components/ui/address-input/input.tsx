@@ -1,22 +1,7 @@
 import React, { useEffect, useState, useRef, useLayoutEffect } from "react";
 import styles from "./index.module.scss";
-import { input } from "@/utils/types";
-import { EyeIcon } from "@/components/icons/eye";
-import usePlacesService from "react-google-autocomplete/lib/usePlacesAutocompleteService";
-import { PostionIcon } from "@/components/icons/position";
-import {
-  Autocomplete,
-  LoadScript,
-  LoadScriptNext,
-  StandaloneSearchBox,
-  useLoadScript,
-} from "@react-google-maps/api";
-import usePlacesAutocomplete from "use-places-autocomplete";
-import axios from "axios";
-import ReactGoogleAutocomplete, {
-  usePlacesWidget,
-} from "react-google-autocomplete";
-import GooglePlacesAutocomplete from "react-google-places-autocomplete";
+import { Autocomplete, LoadScriptNext } from "@react-google-maps/api";
+
 const libraries: any = ["places"];
 
 export default function Address({
@@ -40,16 +25,10 @@ export default function Address({
   }
   function onPlaceChanged() {
     if (searchResult != null) {
-      //variable to store the result
       const place = searchResult.getPlace();
-      //variable to store the name from place details result
       const name = place.name;
-      //variable to store the status from place details result
       const status = place.business_status;
-      //variable to store the formatted address from place details result
       const formattedAddress = place.formatted_address;
-      // console.log(place);
-      //console log all results
       console.log(`Name: ${name}`);
       console.log(`Business Status: ${status}`);
       console.log(`Formatted Address: ${formattedAddress}`);
@@ -66,22 +45,5 @@ export default function Address({
     }
   }, [loading]);
 
-  return (
-    <LoadScriptNext
-      libraries={libraries}
-      googleMapsApiKey={"AIzaSyA5xY7XPkq8Huj9k4zM9EVrMGNyBJlE50I" || ""}
-    >
-      <Autocomplete onPlaceChanged={onPlaceChanged} onLoad={onLoad}>
-        <div className={styles.container}>
-          <input
-            required
-            disabled={loading}
-            onChange={(e) => setLocation(e.target.value)}
-            value={location}
-            placeholder={"Enter address"}
-          />
-        </div>
-      </Autocomplete>
-    </LoadScriptNext>
-  );
+  return <></>;
 }

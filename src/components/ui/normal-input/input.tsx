@@ -86,6 +86,7 @@ export default function NormalInputLog({
               ({ name, id }: { name: string; id: string }) => {
                 return (
                   <div
+                    key={id}
                     onClick={() => {
                       setZone(name);
                       setIsDropdown(false);

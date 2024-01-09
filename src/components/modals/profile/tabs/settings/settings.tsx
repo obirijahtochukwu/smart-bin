@@ -50,10 +50,10 @@ export default function SettingsTab({
         {inputs.map(({ name, placeholder, type }, idx) => {
           const props = { name, placeholder, type };
           return (
-            <>
+            <div key={idx}>
               <div className={styles.title}>{name}</div>
               <NormalInputLog key={idx} {...props} />
-            </>
+            </div>
           );
         })}
       </section>

@@ -96,7 +96,7 @@ export default function BinsTab({
           const bin_id = id;
           const props = { bin_id, name, address, zone, fill_level, bins };
           if (idx < currentPage * 4 && idx > currentPage * 4 - 5) {
-            return <Bin {...props} />;
+            return <Bin key={id} {...props} />;
           }
           return null;
         })}

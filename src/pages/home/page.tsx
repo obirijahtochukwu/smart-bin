@@ -61,17 +61,6 @@ export const HomePage = () => {
     getBins: getbins.fetchedData,
   };
 
-  console.log("jjj");
-
-  // return (
-  //   <div className="">
-  //     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam
-  //     numquam possimus ducimus animi veniam, adipisci, aspernatur eveniet, odit
-  //     fugiat vel nulla mollitia quibusdam reprehenderit aliquid quisquam! Qui
-  //     tenetur explicabo impedit!
-  //   </div>
-  // );
-
   return (
     <main className={`${styles.container} ${hide ? styles.hide : ""}`}>
       <SideBar {...props} />
@@ -84,14 +73,15 @@ export const HomePage = () => {
     </main>
   );
 };
+
 const libraries = ["places"];
 
 const App = ({ markers }: { markers: marker[] | any }) => {
   const { isLoaded } = useLoadScript({
     id: "google-map-script",
-    googleMapsApiKey: `AIzaSyA5xY7XPkq8Huj9k4zM9EVrMGNyBJlE50I`,
+    googleMapsApiKey: process.env.REACT_APP_REACT_APP_MAP_KEY || "",
     // @ts-ignore
-    libraries: libraries,
+    libraries,
   });
 
   const [map, setMap] = useState(null);

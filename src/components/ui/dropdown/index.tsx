@@ -72,9 +72,10 @@ export default function DropdownLog({ hide }: hide) {
           isDropdown ? styles.show : null
         }`}
       >
-        {zones?.map((zone: zone) => {
+        {zones?.map((zone: zone, idx: number) => {
           return (
             <div
+              key={idx}
               onClick={() => {
                 setZone(zone);
                 setIsDropdown(false);
