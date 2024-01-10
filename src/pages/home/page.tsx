@@ -5,7 +5,9 @@ import { useEffect, useState, useCallback } from "react";
 import ProfileModal from "../../components/modals/profile";
 import {
   GoogleMap,
+  Marker,
   OverlayView,
+  OverlayViewF,
   Polyline,
   useLoadScript,
 } from "@react-google-maps/api";
@@ -22,7 +24,6 @@ export const HomePage = () => {
   const navigate = useNavigate();
 
   const { auth, bins, markers } = useSelector((state: any) => state.user);
-
   const [openModal, setOpenModal] = useState(false);
   const [openProfileModal, setOpenProfileModal] = useState(false);
   const [hide, setHide] = useState(false);
@@ -61,11 +62,13 @@ export const HomePage = () => {
     getBins: getbins.fetchedData,
   };
 
+  console.log(markers);
+
   return (
     <main className={`${styles.container} ${hide ? styles.hide : ""}`}>
       <SideBar {...props} />
       <div className={styles.image}>
-        <App markers={markers} />
+        {markers[0]?.lat && <App markers={markers} />}
       </div>
 
       <ManageStopsModal {...props} />
@@ -154,18 +157,19 @@ const App = ({ markers }: { markers: marker[] | any }) => {
           onLoad={onLoad}
           onUnmount={onUnmount}
         >
-          {markers?.map(({ lat, lng, fill_level }: marker) => (
-            // <Marker icon={"/media/logo/trash.svg"} position={{ lat, lng }}>
-            <OverlayView
-              mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-              position={{ lat, lng }}
-            >
-              <div className="position-relative">
-                <BucketIcon />
-                <div className={styles.fill_level}>{fill_level}</div>
-              </div>
-            </OverlayView>
-            // </Marker>
+          {markers?.map(({ lat, lng, fill_level }: marker, idx: number) => (
+            <Marker icon={"/media/logo/trash.svg"} position={{ lat, lng }}>
+              <OverlayViewF
+                key={idx}
+                mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+                position={{ lat, lng }}
+              >
+                <div className="position-relative">
+                  <BucketIcon />
+                  <div className={styles.fill_level}>{fill_level}</div>
+                </div>
+              </OverlayViewF>
+            </Marker>
           ))}
 
           {/* <Marker icon={"/media/logo/trash.svg"} position={{ lat, lng }}> */}
