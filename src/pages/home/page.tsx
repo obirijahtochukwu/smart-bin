@@ -68,7 +68,8 @@ export const HomePage = () => {
     <main className={`${styles.container} ${hide ? styles.hide : ""}`}>
       <SideBar {...props} />
       <div className={styles.image}>
-        {markers[0]?.lat && <App markers={markers} />}
+        {" "}
+        <App markers={markers} />
       </div>
 
       <ManageStopsModal {...props} />
