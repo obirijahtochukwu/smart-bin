@@ -1,37 +1,70 @@
-import { CloseIcon } from "../../../../../components/icons/close";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./index.module.scss";
-import { TrashIcon } from "../../../../../components/icons/trash";
-import { EditIcon } from "../../../../../components/icons/edit";
-import { input } from "../../../../../utils/types";
-import InputLog from "../../../../../components/ui/input/input";
 import NormalInputLog from "../../../../../components/ui/normal-input/input";
-import Button from "../../../../../components/ui/button";
 import SecondaryButton from "../../../../../components/ui/secondary-button";
-import DropdownLog from "../../../../../components/ui/dropdown";
-import { DropdownIcon } from "../../../../../components/icons/dropdown";
+import { Autocomplete } from "@react-google-maps/api";
+import axios from "axios";
+import { getStore, useGet } from "../../../../../utils/functions";
+import { toast } from "react-toastify";
 
 export default function CurrentLocationTab({ setOpenModal }: any) {
-  const inputs = [
-    {
-      name: "name",
-      placeholder: "96 Clyde Avenue, Mount Pearl, NL, Canada",
-      type: "text",
-    },
-  ];
+  const [loading, setLoading] = useState(false);
+  const [searchResult, setSearchResult] = useState<string | any>("");
+  const [location, setLocation] = useState("");
+
+  const { fetchedData, isLoading, fetch } = useGet("current-location/");
+
+  const onLoad = (autocomplete: any) => {
+    setSearchResult(autocomplete);
+  };
+
+  const onPlaceChanged = () => {
+    if (searchResult != null) {
+      const place = searchResult.getPlace();
+      const name = place.name;
+      const status = place.business_status;
+      const formattedAddress = place.formatted_address;
+      setLocation(formattedAddress);
+    } else {
+      alert("Please enter text");
+    }
+  };
+
+  const addLocation = (e: any) => {
+    e.preventDefault();
+    setLoading(true);
+    axios
+      .post(
+        `${process.env.REACT_APP_API_URL + "add-vehicle-location/"}`,
+        { address: location },
+        {
+          headers: { Authorization: `Token ${getStore("auth").token}` },
+        }
+      )
+      .then((res) => {
+        setLocation("");
+        toast.success("Vehicle location added🌍🚚.");
+        setLoading(false);
+      });
+  };
 
   return (
     <article>
-      <footer className="w-100">
-        {inputs.map(({ name, placeholder, type }, idx) => {
-          const props = { name, placeholder, type };
-          return <NormalInputLog key={idx} {...props} />;
-        })}
+      <form onSubmit={addLocation} className="w-100">
+        <Autocomplete onPlaceChanged={onPlaceChanged} onLoad={onLoad}>
+          <input
+            required
+            onChange={(e) => setLocation(e.target.value)}
+            value={location}
+            style={{ width: "100%" }}
+            placeholder={"Enter address"}
+          />
+        </Autocomplete>
 
         <div className={styles.btns}>
-          <SecondaryButton className="" title="submit" />
+          <SecondaryButton loading={loading} className="" title="submit" />
         </div>
-      </footer>
+      </form>
     </article>
   );
 }

@@ -4,8 +4,10 @@ import ManageStopsModal from "../../components/modals/manage-stops";
 import { useEffect, useState, useCallback } from "react";
 import ProfileModal from "../../components/modals/profile";
 import {
+  DirectionsRenderer,
   GoogleMap,
   Marker,
+  MarkerF,
   OverlayView,
   OverlayViewF,
   Polyline,
@@ -81,15 +83,9 @@ export const HomePage = () => {
 const libraries = ["places"];
 
 const App = ({ markers }: { markers: marker[] | any }) => {
-  const { isLoaded } = useLoadScript({
-    id: "google-map-script",
-    googleMapsApiKey: process.env.REACT_APP_REACT_APP_MAP_KEY || "",
-    // @ts-ignore
-    libraries,
-  });
-
   const [map, setMap] = useState(null);
   const [center, setCenter] = useState<any | undefined>({});
+  const { fetchedData, isLoading, fetch } = useGet("current-location/");
 
   const containerStyle = {
     width: "100%",
@@ -101,8 +97,8 @@ const App = ({ markers }: { markers: marker[] | any }) => {
       const center = markers.reduce(
         (prev: any, marker: marker) => {
           const acc = { ...prev };
-          acc.lat += marker.lat;
-          acc.lng += marker.lng;
+          acc.lat += +marker.lat;
+          acc.lng += +marker.lng;
           return acc;
         }
         // { lat: 0, lng: 0 }
@@ -142,51 +138,96 @@ const App = ({ markers }: { markers: marker[] | any }) => {
   };
 
   useEffect(() => {
-    console.log(markers);
-  }, [markers]);
+    return () => {
+      fetch();
+    };
+  }, []);
+  const emptyArray: any = [];
+  const vehicleLocation = [...emptyArray, fetchedData || {}]?.map(
+    ({ latitude, longitude }) => {
+      return { lat: latitude, lng: longitude };
+    }
+  );
+  const [directions, setDirections] = useState<any>({});
+  console.log(vehicleLocation);
+  console.log(
+    markers?.map(({ lat, lng }: marker) => {
+      return { location: { lat, lng } };
+    })
+  );
+
+  useEffect(() => {
+    const directionsService = new window.google.maps.DirectionsService();
+    console.log(vehicleLocation);
+    if (vehicleLocation.length > 0) {
+      const origin = vehicleLocation[0]; // Your origin coordinates
+      const destination = { lat: 41.878113, lng: -87.629799 }; // Your destination coordinates
+      const waypoints = markers?.map(({ lat, lng }: marker) => {
+        return { location: { lat, lng } };
+      });
+      directionsService.route(
+        {
+          origin: origin,
+          destination: origin,
+          waypoints: waypoints,
+          optimizeWaypoints: true, // Adjust the order of waypoints to minimize travel time
+          //@ts-ignore
+          travelMode: "DRIVING",
+        },
+        (result, status) => {
+          if (status === "OK") {
+            setDirections(result);
+            console.log(status);
+          } else {
+            console.error("Error fetching directions:", result);
+          }
+        }
+      );
+    }
+  }, [vehicleLocation]);
 
   return (
     <div className="App">
-      {!isLoaded ? (
-        <h1>Loading...</h1>
-      ) : (
-        <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={center}
-          onClick={addMarker}
-          zoom={12}
-          onLoad={onLoad}
-          onUnmount={onUnmount}
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={center}
+        onClick={addMarker}
+        zoom={12}
+        onLoad={onLoad}
+        onUnmount={onUnmount}
+      >
+        {markers?.map(({ lat, lng, fill_level }: marker, idx: number) => (
+          <Marker icon={"/media/logo/trash.svg"} position={{ lat, lng }}>
+            <OverlayViewF
+              key={idx}
+              mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+              position={{ lat, lng }}
+            >
+              <div className="position-relative">
+                <BucketIcon />
+                <div className={styles.fill_level}>{fill_level}</div>
+              </div>
+            </OverlayViewF>
+          </Marker>
+        ))}
+
+        <OverlayViewF
+          mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+          position={vehicleLocation[0]}
         >
-          {markers?.map(({ lat, lng, fill_level }: marker, idx: number) => (
-            <Marker icon={"/media/logo/trash.svg"} position={{ lat, lng }}>
-              <OverlayViewF
-                key={idx}
-                mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-                position={{ lat, lng }}
-              >
-                <div className="position-relative">
-                  <BucketIcon />
-                  <div className={styles.fill_level}>{fill_level}</div>
-                </div>
-              </OverlayViewF>
-            </Marker>
-          ))}
+          <img src="/media/images/home/truck.svg" alt="" />
+        </OverlayViewF>
 
-          {/* <Marker icon={"/media/logo/trash.svg"} position={{ lat, lng }}> */}
-
-          {markers.length > 0 && (
-            <Polyline
-              path={markers}
-              options={{
-                strokeColor: "#EF4712",
-                strokeOpacity: 1.0,
-                strokeWeight: 5,
-              }}
-            />
-          )}
-        </GoogleMap>
-      )}
+        <Polyline
+          path={markers}
+          options={{
+            strokeColor: "#EF4712",
+            strokeOpacity: 1.0,
+            strokeWeight: 5,
+          }}
+        />
+        <DirectionsRenderer directions={directions} />
+      </GoogleMap>
     </div>
   );
 };

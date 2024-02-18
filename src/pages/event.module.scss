@@ -1,0 +1,33 @@
+@import "../styles/theme.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px;
+  max-width: 600px;
+  margin: 100px auto;
+  border: 10px double rgb(31, 29, 29);
+}
+
+.header {
+  font-size: 20px;
+  text-transform: lowercase;
+  font-family: "bitter";
+  &::first-letter {
+    text-transform: uppercase;
+  }
+
+  b {
+    text-transform: uppercase;
+    font-style: italic;
+    margin-right: 4px;
+  }
+}
+
+.agenda {
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "poppins";
+  font-style: italic;
+}

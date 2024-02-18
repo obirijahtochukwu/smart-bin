@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useRef, useLayoutEffect } from "react";
 import styles from "./index.module.scss";
-import { Autocomplete, LoadScriptNext } from "@react-google-maps/api";
-
-const libraries: any = ["places"];
+import { Autocomplete } from "@react-google-maps/api";
 
 export default function Address({
   form,
@@ -45,5 +43,17 @@ export default function Address({
     }
   }, [loading]);
 
-  return <></>;
+  return (
+    <Autocomplete onPlaceChanged={onPlaceChanged} onLoad={onLoad}>
+      <div className={styles.container}>
+        <input
+          required
+          disabled={loading}
+          onChange={(e) => setLocation(e.target.value)}
+          value={location}
+          placeholder={"Enter address"}
+        />
+      </div>
+    </Autocomplete>
+  );
 }
