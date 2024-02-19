@@ -192,41 +192,30 @@ const App = ({ markers }: { markers: marker[] | any }) => {
         mapContainerStyle={containerStyle}
         center={center}
         onClick={addMarker}
-        zoom={12}
+        zoom={10}
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
         {markers?.map(({ lat, lng, fill_level }: marker, idx: number) => (
-          <Marker icon={"/media/logo/trash.svg"} position={{ lat, lng }}>
-            <OverlayViewF
-              key={idx}
-              mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-              position={{ lat, lng }}
-            >
-              <div className="position-relative">
-                <BucketIcon />
-                <div className={styles.fill_level}>{fill_level}</div>
-              </div>
-            </OverlayViewF>
-          </Marker>
+          <MarkerF
+            icon={"/media/logo/trash.svg"}
+            position={{ lat, lng }}
+          ></MarkerF>
         ))}
 
-        <OverlayViewF
-          mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+        <MarkerF
+          icon={"/media/images/home/truck.svg"}
           position={vehicleLocation[0]}
-        >
-          <img src="/media/images/home/truck.svg" alt="" />
-        </OverlayViewF>
-
-        <Polyline
-          path={markers}
+        ></MarkerF>
+        <DirectionsRenderer
+          directions={directions}
           options={{
-            strokeColor: "#EF4712",
-            strokeOpacity: 1.0,
-            strokeWeight: 5,
+            polylineOptions: {
+              strokeColor: "#EF4712",
+            },
+            suppressMarkers: true,
           }}
         />
-        <DirectionsRenderer directions={directions} />
       </GoogleMap>
     </div>
   );

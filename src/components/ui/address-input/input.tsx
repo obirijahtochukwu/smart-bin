@@ -23,10 +23,10 @@ export default function Address({
   }
   function onPlaceChanged() {
     if (searchResult != null) {
-      const place = searchResult.getPlace();
-      const name = place.name;
-      const status = place.business_status;
-      const formattedAddress = place.formatted_address;
+      const place = searchResult?.getPlace();
+      const name = place?.name;
+      const status = place?.business_status;
+      const formattedAddress = place?.formatted_address;
       console.log(`Name: ${name}`);
       console.log(`Business Status: ${status}`);
       console.log(`Formatted Address: ${formattedAddress}`);
@@ -50,8 +50,8 @@ export default function Address({
           required
           disabled={loading}
           onChange={(e) => setLocation(e.target.value)}
-          value={location}
-          placeholder={"Enter address"}
+          // value={location}
+          placeholder={location || "Enter address"}
         />
       </div>
     </Autocomplete>

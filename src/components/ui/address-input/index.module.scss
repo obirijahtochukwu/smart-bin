@@ -3,6 +3,8 @@
 .container {
   position: relative;
   width: 100%;
+  height: #{lg(50)};
+  overflow: hidden;
   background-color: #ffffff;
   border: #{lg(1)} solid;
   border-color: #e6e6e6;

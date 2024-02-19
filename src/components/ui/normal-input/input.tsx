@@ -70,7 +70,7 @@ export default function NormalInputLog({
             onChange={(e) => setZone(e.target.value)}
             placeholder={placeholder}
           />
-          <div className={`${styles.icon}`}>
+          <div className={`${styles.icon} d-flex align-items-center`}>
             <DropdownIcon />
           </div>
           <section
