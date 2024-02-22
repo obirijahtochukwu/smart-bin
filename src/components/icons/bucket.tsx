@@ -1,7 +1,7 @@
 import { className } from "@/utils/types";
 import React from "react";
 
-export const BucketIcon: React.FC<className> = ({ className, onClick }) => {
+export default function BucketIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -57,4 +57,4 @@ export const BucketIcon: React.FC<className> = ({ className, onClick }) => {
       <path d="M42 10.9452H0V12.5631H42V10.9452Z" fill="#E02B16" />
     </svg>
   );
-};
+}

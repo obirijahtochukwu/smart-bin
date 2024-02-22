@@ -12,15 +12,9 @@ import { ToastContainer } from "react-toastify";
 import ResponsivePagination from "react-responsive-pagination";
 import { useNavigate } from "react-router-dom";
 import { EditBinDialog } from "../../../../../components/ui/edit";
-
-// const Address = dynamic(() => import("../../../../../components/ui/address-input/input"), {
-// ssr: false,import { ResponsivePagination } from 'react-responsive-pagination';
-// import { DeleteDialog } from "../../../../../components/ui/delete-modal";
 import { regrex, uid } from "../../../../../utils/constants";
 import DeleteDialog from "../../../../../components/ui/delete-modal";
 import { addBins } from "../../../../../redux/authSlice";
-
-// });
 
 export default function BinsTab({
   setOpenModal,
@@ -30,10 +24,8 @@ export default function BinsTab({
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const [form, setForm] = useState<bin | any>({});
-  // const [bins, setBins] = useState([]);
   const { data, loading, post } = usePost({ url: "add-bin/", form });
   const bins: bin[] = useSelector((state: any) => state.user.binList) || [];
-  // const { fetchedData, isLoading, fetch } = useGet("bins/");
   const totalPages = Math.ceil(bins.length / 4);
 
   const inputs = [
@@ -80,6 +72,7 @@ export default function BinsTab({
       setForm({ name: "", fill_level: "", zone: "", address: "" });
     }
   }, [loading]);
+  console.log(bins);
 
   return (
     <article>
