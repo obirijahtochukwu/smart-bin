@@ -152,7 +152,7 @@ const App = ({ markers }: { markers: marker[] | any }) => {
   useEffect(() => {
     const directionsService = new window.google.maps.DirectionsService();
     console.log(vehicleLocation);
-    if (vehicleLocation.length > 0) {
+    if (vehicleLocation.length > 0 && directions.status != "OK") {
       const origin = vehicleLocation[0]; // Your origin coordinates
       const destination = { lat: 41.878113, lng: -87.629799 }; // Your destination coordinates
       const waypoints = markers?.map(({ lat, lng }: marker) => {
