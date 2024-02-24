@@ -272,14 +272,14 @@ const App = ({ markers }: { markers: marker[] | any }) => {
           </Marker>
         ))}
 
-        <MarkerF
+        <Marker
           icon={{
             url: "/media/images/home/truck.svg",
             // scaledSize: new window.google.maps.Size(30, 30),
             anchor: new window.google.maps.Point(15, 15),
           }}
           position={vehicleLocation[0]}
-        ></MarkerF>
+        ></Marker>
         <DirectionsRenderer
           directions={directions}
           options={{
