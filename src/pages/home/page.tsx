@@ -147,7 +147,7 @@ const App = ({ markers }: { markers: marker[] | any }) => {
       return { lat: latitude, lng: longitude };
     }
   );
-  const [directions, setDirections] = useState<any>({});
+  const [directions, setDirections] = useState<any>({ status: "" });
 
   useEffect(() => {
     const directionsService = new window.google.maps.DirectionsService();
@@ -192,7 +192,7 @@ const App = ({ markers }: { markers: marker[] | any }) => {
         onUnmount={onUnmount}
       >
         {markers?.map(({ lat, lng, fill_level }: marker, idx: number) => (
-          <Marker
+          <MarkerF
             icon={{
               url:
                 "data:image/svg+xml;charset=UTF-8," +
@@ -269,7 +269,7 @@ const App = ({ markers }: { markers: marker[] | any }) => {
               <div className={styles.fill_level}>{fill_level}</div>
             </div>
           </OverlayView> */}
-          </Marker>
+          </MarkerF>
         ))}
 
         <Marker
