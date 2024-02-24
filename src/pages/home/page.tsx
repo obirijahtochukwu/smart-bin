@@ -136,9 +136,9 @@ const App = ({ markers }: { markers: marker[] | any }) => {
   };
 
   useEffect(() => {
-    return () => {
-      fetch();
-    };
+    // return () => {
+    fetch();
+    // };
   }, []);
 
   const emptyArray: any = [];
@@ -148,8 +148,6 @@ const App = ({ markers }: { markers: marker[] | any }) => {
     }
   );
   const [directions, setDirections] = useState<any>({});
-  const [initialPosition, setInitialPosition] = useState<any>({});
-  console.log(vehicleLocation);
 
   useEffect(() => {
     const directionsService = new window.google.maps.DirectionsService();
@@ -171,6 +169,8 @@ const App = ({ markers }: { markers: marker[] | any }) => {
         },
         (result, status) => {
           if (status === "OK") {
+            console.log(result);
+
             setDirections(result);
             console.log(status);
           } else {
